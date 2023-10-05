@@ -1,6 +1,6 @@
 <?php
 
-namespace opbnb;
+namespace kfx;
 
 class events {
     public $hasura;

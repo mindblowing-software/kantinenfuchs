@@ -41,7 +41,7 @@ $router->get('/', function () use ($req) {
 */
 
 $router->mount('/events', function () use ($router, $hasura) {
-    $api = new opbnb\events($hasura);
+    $api = new kfx\events($hasura);
 
     $router->get('/(\w+)', function ($meth) use ($api) {
         $meth = "get_{$meth}";
@@ -58,7 +58,7 @@ $router->mount('/events', function () use ($router, $hasura) {
 });
 
 $router->mount('/actions', function () use ($router, $hasura) {
-    $api = new opbnb\actions($hasura);
+    $api = new kfx\actions($hasura);
 
     $router->get('/(\w+)', function ($meth) use ($api) {
         $meth = "get_{$meth}";
@@ -75,10 +75,10 @@ $router->mount('/actions', function () use ($router, $hasura) {
 
 $router->mount('/users', function () use ($router, $hasura) {
 
-    session_name('weop');
+    session_name('kfx');
     session_start();
 
-    $api = new opbnb\users($hasura);
+    $api = new kfx\users($hasura);
 
     $router->get('/(\w+)', function ($meth) use ($api) {
         $meth = "get_{$meth}";

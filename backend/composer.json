@@ -1,7 +1,7 @@
 {
     "autoload": {
         "psr-4": {
-            "opbnb\\": "src/"
+            "kfx\\": "src/"
         },
         "files": [
             "src/helper.php"

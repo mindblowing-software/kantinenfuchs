@@ -1,6 +1,6 @@
 <?php
 
-namespace opbnb;
+namespace kfx;
 
 class users {
     public $hasura;
@@ -37,31 +37,14 @@ class users {
 
                 // store in session
                 $_SESSION['id'] = $userdata['id'];
-                $_SESSION['login'] = $data['username'];
                 $_SESSION['vorname'] = $userdata['vorname'];
                 $_SESSION['nachname'] = $userdata['nachname'];
                 $_SESSION['email'] = $userdata['email'];
                 $_SESSION['rolle'] = $userdata['rolle'];
-                $_SESSION['praxismanager'] = $userdata['praxismanager'];
-                $_SESSION['operateur'] = $userdata['operateur'];
-                $_SESSION['praxis_id'] = $userdata['praxis_id'];
-
-                // check if praxis does ops
-                if($userdata['praxis']) {
-                    if(count($userdata['praxis']['op_praxis']) > 0) {
-                        $_SESSION['op_praxis'] = true;
-                        dbg('++++ Praxis is a OP Praxis');
-                    } else {
-                        $_SESSION['op_praxis'] = false;
-                        dbg('++++ Praxis is not a OP Praxis');
-                    }                   
-                } else {
-                    dbg('++++ No Praxis, maybe an admin?');
-                }
 
                 $user = $this->get_user_from_session();
                 $user['expire'] = $exp;
-                $token = generate_jwt('we-operate.com', $userdata['id'], $userdata['email'], 'weoperate', $exp, $userdata['rolle']);
+                $token = generate_jwt('kantinenfuchs', $userdata['id'], $userdata['email'], 'kantinenfuchs', $exp, $userdata['rolle']);
 
                 setcookie('hasuraaccess', $token, 0, '/');
             } else {
@@ -87,7 +70,7 @@ class users {
             $user = $this->get_user_from_session();
             $user['expire'] = $exp;
 
-            $token = generate_jwt('we-operate.com', $_SESSION['id'], $_SESSION['email'], 'weoperate', $exp, $_SESSION['rolle']);
+            $token = generate_jwt('kantinenfuchs', $_SESSION['id'], $_SESSION['email'], 'kantinenfuchs', $exp, $_SESSION['rolle']);
             setcookie('hasuraaccess', $token, 0, '/');
 
         } else {
@@ -130,15 +113,10 @@ class users {
     private function get_user_from_session() {
 
         $user['id'] = $_SESSION['id'];
-        $user['login'] = $_SESSION['login'];
         $user['firstname'] = $_SESSION['vorname'];
         $user['lastname'] = $_SESSION['nachname'];
         $user['email'] = $_SESSION['email'];
         $user['rolle'] = $_SESSION['rolle'];
-        $user['praxismanager'] = $_SESSION['praxismanager'];
-        $user['operateur'] = $_SESSION['operateur'];
-        $user['praxis_id'] = $_SESSION['praxis_id'];
-        $user['op_praxis'] = $_SESSION['op_praxis'];
 
         return $user;
     }
