@@ -1,0 +1,11 @@
+query GetUsersByLogin($login: String!) {
+  users(where: {login: {_eq: $login}}) {
+    id
+    email
+    login
+    nachname
+    vorname
+    rolle
+    password
+  }
+}

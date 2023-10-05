@@ -1,0 +1,23 @@
+{
+    "autoload": {
+        "psr-4": {
+            "opbnb\\": "src/"
+        },
+        "files": [
+            "src/helper.php"
+        ]
+    },
+   
+    "require": {
+        "bramus/router": "^1.4",
+        "guzzlehttp/guzzle": "^7.0",
+        "adhocore/jwt": "^1.1",
+        "ankitpokhrel/tus-php": "^2.0",
+        "firebase/php-jwt": "^6.3",
+        "vlucas/phpdotenv": "^5.3",
+        "embed/embed": "^4.3",
+        "nyholm/psr7": "^1.4",
+        "ricardofiorani/oembed": "^1.1",
+        "nyholm/psr7-server": "^1.0"
+    }
+}
