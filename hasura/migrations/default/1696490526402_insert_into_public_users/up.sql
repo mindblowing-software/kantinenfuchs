@@ -1,0 +1,1 @@
+INSERT INTO "public"."users"("id", "email", "vorname", "nachname", "rolle", "password") VALUES (1, E'admin@kantinenfuchs.de', E'Admin', E'Kantinenfuchs', E'admin', E'$2y$10$A2jv1/Ua0oete1RwAWPk.OvS.ZGUsTKuny.d3HpdgxWpz1eKALn62');
