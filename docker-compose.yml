@@ -2,6 +2,7 @@ version: '3.6'
 services:
   postgres:
     image: postgres:12
+    container_name: kantinenfuchs-postgres
     restart: always
     volumes:
     - db_data:/var/lib/postgresql/data
@@ -9,6 +10,7 @@ services:
       POSTGRES_PASSWORD: postgrespassword
   graphql-engine:
     image: hasura/graphql-engine:v2.13.0
+    container_name: kantinenfuchs-hasura
     ports:
     - "8080:8080"
     depends_on:
@@ -29,7 +31,7 @@ services:
       HASURA_GRAPHQL_JWT_SECRET: '{ "type": "RS256", "key": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAuZDwi3VRzDqqi34W+dt5\n8aI3Z9LYbvCGJ1WvSy6/0PYanSNbHSa20yH11Ietj8g2g8DK1YZvLHfdzgLiT7Qq\nQMi04tCYsfh48Pf18yyQxfM/ltEmx4eE+uckcjG8nenajLSo3g3eGI+z+isQCfWy\nWBz7ZZRoGG5YLv7fuTA7hKnpt4toML72kjOWSwZ1V2t2s5lUuXbWvnMgxXvaI/A6\n2S7Zhu8ZV6CRBthMirQ0sbwn0yhntxFaNKAmOHfPq562aj0v9NauuzueHcrU/sJj\nlYKlt6xBnRYUaJd+T2+MW7SbyizE3WwPaW4GktH9ny7hA6qRLVANpcTmpzntcsaK\n04r+4PD8vujowIejz3uyLFFuBEzNxM0LFchvqt89rHS7O+4h7WHf2rpvgFe75wYe\n/JwxmTJQ+UkFb5YraPvqni7/i+qZsPbZO5DOBTTTLYzUK3XLWUnbJ4X728mug0HP\nCJGnQPs8aZuKT6lWh9+efGvFEhb7KIGOL2E+ULbTtLPJacmsx8YGNebU9z8hldd+\nC5YPvRGn3dnM9iH6GM/Q5UNs/yZQQYQH1eLl9gHBkgeBIWxSwldpckk8UDLHX3gY\nEeffv/r25BMhvHZ8t+srDFqui+60Ue4keb0YN8B/T5qfi6EI+dpq7PIqAWjwufsb\n42c9s5g+GjKSOlEWMdy5G8kCAwEAAQ==\n-----END PUBLIC KEY-----\n", "header": {"type": "Cookie", "name": "hasuraaccess" } }'      
   webserver:
     image: nginx:alpine
-    container_name: backend-webserver
+    container_name: kantinenfuchs-backend-webserver
     working_dir: /application
     restart: always
     volumes:
@@ -39,7 +41,7 @@ services:
         - "2222:80"
   backend:
     build: backend/docker
-    container_name: backend-php-fpm
+    container_name: kantinenfuchs-backend-php-fpm
     working_dir: /application
     restart: always
     volumes:
