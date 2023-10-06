@@ -49,7 +49,7 @@
       <q-card flat class="q-mt-xl q-ma-md">
         <q-card-section>
           <div class="column q-pa-sm items-center">
-            <q-btn to="/" class="btn-fixed-width" color="primary" text-color="white" label="Logout" />
+            <q-btn class="btn-fixed-width" color="primary" text-color="white" label="Logout" @click="logout()"/>
           </div>
         </q-card-section>
       </q-card> 
@@ -80,13 +80,22 @@
 
 <script>
 import { defineComponent, ref } from 'vue'
+import { useAuthStore } from 'stores/Auth'
 
 export default defineComponent({
   name: "StartPage",
   setup() {
+
+    const auth = useAuthStore()
+    
+    function logout() {
+      auth.logout()
+    }
+
     return {
       confirm: ref(false),
-      meals_confirmed: ref(false)
+      meals_confirmed: ref(false),
+      logout
     }
   },
   data() {

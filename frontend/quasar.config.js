@@ -12,7 +12,7 @@
 const { configure } = require('quasar/wrappers');
 
 
-module.exports = configure(function (/* ctx */) {
+module.exports = configure(function (ctx) {
   return {
     eslint: {
       // fix: true,
@@ -80,9 +80,17 @@ module.exports = configure(function (/* ctx */) {
       // viteVuePluginOptions: {},
 
       
-      // vitePlugins: [
-      //   [ 'package-name', { ..options.. } ]
-      // ]
+      vitePlugins: [
+        [ '@rollup/plugin-graphql' ]
+      ],
+      env: {
+        HASURA_API: ctx.dev
+          ? 'http://localhost:8080/v1/graphql'
+          : 'https://kantinenfuchs.de/api/v1/graphql',
+        BACKEND_API: ctx.dev
+          ? 'http://localhost:2222'
+          : 'https://kantinenfuchs.de/backend',
+      }
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#devServer
