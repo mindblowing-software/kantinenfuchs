@@ -81,6 +81,8 @@
 <script>
 import { defineComponent, ref } from 'vue'
 import { useAuthStore } from 'stores/Auth'
+import HasuraApi from 'src/helpers/hasuraApi'
+import KUNDEBYID from 'src/queries/kunde_by_id.gql'
 
 export default defineComponent({
   name: "StartPage",
@@ -95,13 +97,27 @@ export default defineComponent({
     return {
       confirm: ref(false),
       meals_confirmed: ref(false),
-      logout
+      logout,
+      auth,
+      count: ref(),
+      kunde: {},
     }
   },
-  data() {
-    return {
-      count: 24,
-    }
+  created() {
+    // fetch on init
+    this.fetchData()
+  },
+  methods: {
+    async fetchData() {
+
+        const api = new HasuraApi()
+
+        var data = await api.graphql(KUNDEBYID, { id: this.auth.user.kunde_id })
+
+        this.kunde = data.kunden_by_pk
+        this.count = this.kunde.default_anzahl
+    },
   }
+
 })
 </script>

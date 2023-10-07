@@ -6,5 +6,6 @@ query GetUsersByEmail($email: String!) {
     vorname
     rolle
     password
+    kunde_id
   }
 }

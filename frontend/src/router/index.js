@@ -40,6 +40,7 @@ export default route(function (/* { store, ssrContext } */) {
       // still no user? need to check
       if(!auth.user.id) {
 
+        console.log("Router", to)
         auth.returnUrl = to.fullPath
         return '/account/login'
       } 

@@ -25,6 +25,7 @@ export const useAuthStore = defineStore('auth', {
           //localStorage.setItem('user', JSON.stringify(user));
 
           // redirect to previous url or default to start page
+          console.log("Auth", this.returnUrl)
           this.router.push(this.returnUrl || '/start');
         } else {
 

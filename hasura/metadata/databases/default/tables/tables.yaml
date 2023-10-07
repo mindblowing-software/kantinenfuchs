@@ -1,1 +1,3 @@
+- "!include public_bestellungen.yaml"
+- "!include public_kunden.yaml"
 - "!include public_users.yaml"

@@ -1,0 +1,7 @@
+query KundeById($id: Int!) {
+  kunden_by_pk(id: $id) {
+    default_anzahl
+    id
+    name
+  }
+}

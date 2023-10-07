@@ -41,6 +41,7 @@ class users {
                 $_SESSION['nachname'] = $userdata['nachname'];
                 $_SESSION['email'] = $userdata['email'];
                 $_SESSION['rolle'] = $userdata['rolle'];
+                $_SESSION['kunde_id'] = $userdata['kunde_id'];
 
                 $user = $this->get_user_from_session();
                 $user['expire'] = $exp;
@@ -117,6 +118,7 @@ class users {
         $user['lastname'] = $_SESSION['nachname'];
         $user['email'] = $_SESSION['email'];
         $user['rolle'] = $_SESSION['rolle'];
+        $user['kunde_id'] = $_SESSION['kunde_id'];
 
         return $user;
     }

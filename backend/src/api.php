@@ -15,7 +15,7 @@ function generate_jwt($issuer, $user_id, $email, $applicationId, $exp, $rolle)
     $payload = array(
         "iss" => $issuer,
         "exp" => $exp,
-        "sub" => $user_id,
+        "sub" => (string) $user_id,
         'email' => $email,
         #"data" => $data,
         #'applicationId' => $applicationId,
@@ -23,7 +23,7 @@ function generate_jwt($issuer, $user_id, $email, $applicationId, $exp, $rolle)
             'x-hasura-allowed-roles' => [$rolle],
             'x-hasura-default-role' => $rolle,
         #    #'x-hasura-role' => $role,
-            'x-hasura-user-id' => $user_id,
+            'x-hasura-user-id' => (string) $user_id,
         #    'x-hasura-org-id' => $org_id,
         #    #'x-hasura-custom' => $data
         #    'x-hasura-api-token-id' => $api_token_id,
