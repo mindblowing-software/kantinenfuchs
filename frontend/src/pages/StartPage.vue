@@ -100,7 +100,11 @@ export default defineComponent({
       logout,
       auth,
       count: ref(),
-      kunde: {},
+    }
+  },
+  data() {
+    return {
+        kunde: {},
     }
   },
   created() {
@@ -114,7 +118,7 @@ export default defineComponent({
 
         var data = await api.graphql(KUNDEBYID, { id: this.auth.user.kunde_id })
 
-        this.kunde = data.kunden_by_pk
+        this.kunde = data.data.kunden_by_pk
         this.count = this.kunde.default_anzahl
     },
   }
