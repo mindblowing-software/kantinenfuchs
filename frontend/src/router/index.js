@@ -2,7 +2,7 @@ import { route } from 'quasar/wrappers'
 import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router'
 import routes from './routes'
 
-import { useAuthStore } from 'stores/Auth'
+import { useAuthStore } from 'stores/RailsAuth'
 /*
  * If not building with SSR mode, you can
  * directly export the Router instantiation;
@@ -35,7 +35,7 @@ export default route(function (/* { store, ssrContext } */) {
 
     if (authRequired && !auth.user.id) {
       // try to refresh if session still exists 
-      await auth.refresh()
+      //await auth.refresh()
 
       // still no user? need to check
       if(!auth.user.id) {

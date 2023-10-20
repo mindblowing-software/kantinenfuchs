@@ -1,41 +1,50 @@
 <template>
   <q-page class="flex flex-center">
-    <form @submit.prevent="submitLogin" class="q-pa-md">
-        <q-card flat bordered class="login-card">
-        <q-card-section>
-            <div class="text-h6">Anmelden</div>
-        </q-card-section>
+    <div class="column justify-center items-center">
+      <div class="col">
+        <img
+          alt="Quasar logo"
+          src="~assets/thumb-up-fox.jpg"
+          style="width: 200px; height: 200px"
+        >
+      </div>
+      <form @submit.prevent="submitLogin" class="q-pa-md">
+          <q-card flat bordered class="login-card">
+          <q-card-section>
+              <div class="text-h6">Anmelden</div>
+          </q-card-section>
 
-        <q-card-section class="q-gutter-y-md column">
+          <q-card-section class="q-gutter-y-md column">
 
-            <q-input v-model="username" dense filled label="Email" />
-            <q-input v-model="password" dense filled :type="isPwd ? 'password' : 'text'" label="Password">
-                <template v-slot:append>
-                <q-icon
-                    :name="isPwd ? 'visibility_off' : 'visibility'"
-                    class="cursor-pointer"
-                    @click="isPwd = !isPwd"
-                />
-                </template>
-            </q-input>
+              <q-input v-model="username" dense filled label="Email" />
+              <q-input v-model="password" dense filled :type="isPwd ? 'password' : 'text'" label="Password">
+                  <template v-slot:append>
+                  <q-icon
+                      :name="isPwd ? 'visibility_off' : 'visibility'"
+                      class="cursor-pointer"
+                      @click="isPwd = !isPwd"
+                  />
+                  </template>
+              </q-input>
 
-            <div class="row justify-end">
-                <q-btn
-                    type="submit"
-                    :loading="submitting"
-                    label="Login"
-                    class="q-mt-md"
-                    color="teal"
-                >
-                    <template v-slot:loading>
-                    <q-spinner-facebook />
-                    </template>
-                </q-btn>
-            </div>
+              <div class="row justify-end">
+                  <q-btn
+                      type="submit"
+                      :loading="submitting"
+                      label="Login"
+                      class="q-mt-md"
+                      color="teal"
+                  >
+                      <template v-slot:loading>
+                      <q-spinner-facebook />
+                      </template>
+                  </q-btn>
+              </div>
 
-        </q-card-section>
-        </q-card>
-    </form>
+          </q-card-section>
+          </q-card>
+      </form>
+    </div>
   </q-page>    
 </template>
 
@@ -47,7 +56,7 @@
 
 <script>
 import { defineComponent, ref } from 'vue';
-import { useAuthStore } from 'stores/Auth';
+import { useAuthStore } from 'stores/RailsAuth';
 
 export default defineComponent({
     name: 'LoginPage',

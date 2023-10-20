@@ -90,6 +90,9 @@ module.exports = configure(function (ctx) {
         BACKEND_API: ctx.dev
           ? 'http://localhost:2222'
           : 'https://kantinenfuchs.de/backend',
+        BACKEND_RAILS_API: ctx.dev
+          ? 'http://localhost:3000'
+          : 'https://kantinenfuchs.de/rails',
       }
     },
 
