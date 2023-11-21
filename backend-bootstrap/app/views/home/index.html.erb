@@ -1,0 +1,17 @@
+<% if user_signed_in? %> 
+ <div> Welcome <%= current_user.email %> </div> 
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
+<% else %>
+  <%= button_to "Sign in", new_user_session_path %> 
+<% end %>
+
+<h1>Welcome <%= %>, this is the home page</h1>  
+  
+<button type="button" 
+        class="btn btn-lg btn-danger" 
+        data-bs-toggle="popover" 
+        title="Popover title" 
+        data-bs-content="Amazing content, right ?">
+        Click to toggle popover
+</button> 
+

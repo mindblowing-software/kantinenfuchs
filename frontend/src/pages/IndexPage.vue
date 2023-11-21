@@ -87,6 +87,7 @@
 <script setup>
 import { defineComponent, ref } from 'vue'
 import { useAuthStore } from 'stores/RailsAuth'
+import { fetchWrapper } from "src/helpers/fetchBackendWrapper";
 // import HasuraApi from 'src/helpers/hasuraApi'
 // import KUNDEBYID from 'src/queries/kunde_by_id.gql'
 
@@ -106,12 +107,17 @@ function logout() {
 async function fetchData() {
 
   // const api = new HasuraApi()
+  const baseUrl = `${process.env.BACKEND_RAILS_API}`;
 
   // var data = await api.graphql(KUNDEBYID, { id: this.auth.user.kunde_id })
+  const response = await fetchWrapper.get(`${baseUrl}/customers/${auth.user.customer_id}`);
+  const data = await response.json();
+
+  console.log(data);
 
   // this.kunde = data.data.kunden_by_pk
   // this.count = this.kunde.default_anzahl
-  count.value = 24
+  count.value = data.number_orders
 }
 
 fetchData()
