@@ -1,14 +1,31 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Customers</h1>
+<h1>Kunden</h1>
 
 <div id="customers">
-  <% @customers.each do |customer| %>
-    <%= render customer %>
-    <p>
-      <%= link_to "Show this customer", customer %>
-    </p>
-  <% end %>
+
+<div class="table-responsive small">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Anzahl Bestellungen (default)</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @customers.each do |customer| %>
+        <tr id="<%= dom_id customer %>">
+          <td><%= customer.id %></td>
+          <td><%= customer.name %></td>
+          <td><%= customer.number_orders %></td>
+          <td><%= link_to "Anzeigen", customer %></td>
+          <td><%= link_to "Bearbeiten", edit_customer_path(customer) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 
-<%= link_to "New customer", new_customer_path %>
+<%= link_to "Neuen Kunden anlegen", new_customer_path %>

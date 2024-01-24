@@ -3,8 +3,8 @@
 <%= render @customer %>
 
 <div>
-  <%= link_to "Edit this customer", edit_customer_path(@customer) %> |
-  <%= link_to "Back to customers", customers_path %>
+  <%= link_to "Bearbeiten", edit_customer_path(@customer) %> |
+  <%= link_to "Zurück zur Übersicht", customers_path %>
 
-  <%= button_to "Destroy this customer", @customer, method: :delete %>
+  <%= button_to "Diesen Kunden löschen", @customer, method: :delete %>
 </div>
