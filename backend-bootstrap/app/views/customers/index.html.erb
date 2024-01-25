@@ -21,6 +21,7 @@
           <td><%= customer.name %></td>
           <td><%= customer.number_orders %></td>
           <td><%= link_to "Anzeigen", customer %></td>
+          <td><%= link_to "Neuen Benutzer einladen", new_user_invitation_path(customer_id: customer.id) %></td>
           <td><%= link_to "Bearbeiten", edit_customer_path(customer) %></td>
         </tr>
       <% end %>
@@ -28,4 +29,4 @@
   </table>
 </div>
 
-<%= link_to "Neuen Kunden anlegen", new_customer_path %>
+<%= button_to "Neuen Kunden anlegen", new_customer_path, class: "btn btn-primary" %>

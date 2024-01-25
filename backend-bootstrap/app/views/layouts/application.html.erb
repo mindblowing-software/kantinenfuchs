@@ -7,51 +7,64 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "sign-in", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
   <body>
-    <header class="bd-header py-3 d-flex align-items-stretch">
-      <div class="container-fluid align-items-center">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-              <%= image_tag("cute-fox-small.jpg", size: "38x38", class: "d-inline-block align-top", alt: "Bootstrap", loading: "lazy", keinstyle: "filter: invert(1) grayscale(100%) brightness(200%);") %>
+    <header>
+      <div class="px-3 py-2 text-bg-dark">
+        <div class="container">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+              <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Verwaltung
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><%= link_to "Kunden", customers_path, class: "dropdown-item" %></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                </li>
-              </ul>
-              <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
 
-                <button class="btn btn-outline-dark" type="submit">Search</button>
-              </form>
-            </div>
+            <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+              <li>
+                <a href="#" class="nav-link text-secondary">
+                  <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#home"></use></svg>
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link text-white">
+                  <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#speedometer2"></use></svg>
+                  Dashboard
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link text-white">
+                  <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#table"></use></svg>
+                  Bestellungen
+                </a>
+              </li>
+              <li>
+                <%= link_to customers_path, class: "nav-link text-white" do %>
+                    <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"></use></svg>
+                    Kunden
+                <% end %>
+              </li>
+            </ul>
           </div>
-        </nav>
+        </div>
+      </div>
+      <div class="px-3 py-2 border-bottom mb-3">
+        <div class="container d-flex flex-wrap justify-content-between">
+          <div>
+            <% if user_signed_in? %> 
+              <div class="me-2"> <%= current_user.email %> </div> 
+            <% end %>        
+          </div>
+
+          <div class="text-end">
+            <% if user_signed_in? %> 
+              <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-outline-primary me-2" %> 
+            <% else %>
+              <%= button_to "Sign in", new_user_session_path, class: "btn btn-outline-primary me-2" %> 
+            <% end %>        
+          </div>
+        </div>
       </div>
     </header>
     <div class="container">

@@ -3,3 +3,12 @@
   <td><%= customer.name %></td>
   <td><%= customer.number_orders %></td>
 </tr>
+
+
+<ul>
+  <% customer.users.each do |user| %>
+    <li>
+      <%= user.firstname %> <%= user.lastname %> <%= user.email %> <% if user.invitation_accepted_at.nil? %>Eingeladen<% end -%>
+    </li>
+  <% end %>
+</ul>
