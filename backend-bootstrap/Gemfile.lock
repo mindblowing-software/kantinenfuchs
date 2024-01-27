@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    action_policy (0.6.8)
+      ruby-next-core (>= 1.0)
     actioncable (7.1.2)
       actionpack (= 7.1.2)
       activesupport (= 7.1.2)
@@ -83,6 +85,11 @@ GEM
     bindex (0.8.1)
     bootsnap (1.17.0)
       msgpack (~> 1.2)
+    bootstrap-icons (1.0.14)
+      nokogiri (~> 1)
+    bootstrap-icons-helper (2.0.2)
+      bootstrap-icons (~> 1)
+      rails (>= 7.0)
     builder (3.2.4)
     capybara (3.39.2)
       addressable
@@ -213,6 +220,7 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.2.6)
+    ruby-next-core (1.0.0)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     selenium-webdriver (4.15.0)
@@ -260,7 +268,9 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  action_policy
   bootsnap
+  bootstrap-icons-helper
   capybara
   cssbundling-rails
   debug

@@ -1,14 +1,17 @@
-<tr id="<%= dom_id customer %>">
-  <td><%= customer.id %></td>
-  <td><%= customer.name %></td>
-  <td><%= customer.number_orders %></td>
-</tr>
-
-
-<ul>
-  <% customer.users.each do |user| %>
-    <li>
-      <%= user.firstname %> <%= user.lastname %> <%= user.email %> <% if user.invitation_accepted_at.nil? %>Eingeladen<% end -%>
-    </li>
-  <% end %>
-</ul>
+<div id="<%= dom_id customer %>" class="card">
+  <h5 class="card-header"><%= customer.name %></h5>
+  <div class="card-body">
+    <h5 class="card-title">Defaultanzahl Essen: <%= customer.number_orders %></h5>
+    <p class="card-text">Zugeordnete Benutzer</p>
+    <ul>
+      <% customer.users.each do |user| %>
+        <li>
+          <%= user.firstname %> <%= user.lastname %> <%= user.email %> 
+          <% if user.invitation_accepted_at.nil? %><span class="badge text-bg-warning">Eingeladen</span>
+          <% else %><span class="badge text-bg-success">Aktiv</span>
+          <% end -%>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

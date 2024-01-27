@@ -12,6 +12,7 @@
   </head>
 
   <body>
+<!--
     <header>
       <div class="px-3 py-2 text-bg-dark">
         <div class="container">
@@ -23,25 +24,25 @@
             <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
               <li>
                 <a href="#" class="nav-link text-secondary">
-                  <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#home"></use></svg>
+                  <div class="d-block mx-auto mb-1 text-center"><%= bootstrap_icon "house", width: 24, height: 24, fill: "white" %></div>
                   Home
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link text-white">
-                  <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#speedometer2"></use></svg>
+                <a href="#" class="nav-link text-white text-center">
+                  <div class="d-block mx-auto mb-1"><%= bootstrap_icon "speedometer2", width: 24, height: 24, fill: "white" %></div>
                   Dashboard
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link text-white">
-                  <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#table"></use></svg>
+                <a href="#" class="nav-link text-white text-center">
+                  <div class="d-block mx-auto mb-1"><%= bootstrap_icon "table", width: 24, height: 24, fill: "white" %></div>
                   Bestellungen
                 </a>
               </li>
               <li>
                 <%= link_to customers_path, class: "nav-link text-white" do %>
-                    <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"></use></svg>
+                    <div class="d-block mx-auto mb-1 text-center"><%= bootstrap_icon "person-circle", width: 24, height: 24, fill: "white" %></div>
                     Kunden
                 <% end %>
               </li>
@@ -67,9 +68,41 @@
         </div>
       </div>
     </header>
+-->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Top navbar</a>
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarCollapse" style="">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <%= link_to "Dashboard", customers_path, class: "nav-link"%>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Bestellungen", customers_path, class: "nav-link active"%>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Kunden", customers_path, class: "nav-link"%>
+            </li>
+          </ul>
+          <% if user_signed_in? %> 
+            <%= button_to "Abmelden", destroy_user_session_path, method: :delete, class: "btn btn-outline-primary me-2" %> 
+          <% else %>
+            <%= button_to "Anmelden", new_user_session_path, class: "btn btn-outline-primary me-2" %> 
+          <% end %> 
+        </div>
+      </div>
+    </nav>
+
+
+    
     <div class="container">
+<!--      
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
+-->
       <%= yield %>
     </div>
   </body>

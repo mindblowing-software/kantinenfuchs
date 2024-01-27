@@ -1,10 +1,20 @@
-<h1>Kunde bearbeiten</h1>
-
-<%= render "form", customer: @customer %>
-
-<br>
-
+<div class="d-flex mb-2">
+<div class="me-2">
+<%= link_to customers_path, class: "btn btn-secondary btn-sm" do %>
+  <%= bootstrap_icon "arrow-left-short", class: "pb-1" %> Zurück zur Übersicht
+<% end -%>
+</div>
 <div>
-  <%= link_to "Anzeigen", @customer %> |
-  <%= link_to "Zurück zur Übersicht", customers_path %>
+  <%= link_to "Anzeigen", @customer, class: "btn btn-secondary btn-sm" %>
+</div>
+</div>
+<div id="<%= dom_id @customer %>" class="card">
+  <h5 class="card-header"><%= @customer.name %> bearbeiten</h5>
+  <div class="card-body">
+  <%= render "form", customer: @customer %>
+  </div>
+</div>
+
+<div class="mt-5">
+  <%= button_to "Diesen Kunden löschen", @customer, method: :delete, class: "btn btn-danger btn-sm", data: { confirm: "Wirklich löschen?" } %>
 </div>
