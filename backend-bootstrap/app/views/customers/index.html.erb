@@ -8,7 +8,6 @@
   <table class="table table-striped table-sm">
     <thead>
       <tr>
-        <th scope="col">ID</th>
         <th scope="col">Name</th>
         <th scope="col">Anzahl Bestellungen (default)</th>
         <th scope="col"></th>
@@ -17,7 +16,6 @@
     <tbody>
       <% @customers.each do |customer| %>
         <tr id="<%= dom_id customer %>">
-          <td><%= customer.id %></td>
           <td><%= customer.name %></td>
           <td><%= customer.number_orders %></td>
           <td class="text-end"><%= link_to "Anzeigen", customer %> |

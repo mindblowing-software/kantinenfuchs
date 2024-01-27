@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ordered_at: 2024-01-27
+  number: 1
+  kunde: one
+  user: one
+
+two:
+  ordered_at: 2024-01-27
+  number: 1
+  kunde: two
+  user: two
