@@ -12,8 +12,14 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
-    @order = Order.new
-    @order.number = current_user.customer.number_orders
+    # check if already exists
+    @order = Order.find_by(ordered_at: Date.today, customer: current_user.customer)
+    if @order.nil?
+      @order = Order.new
+      @order.number = current_user.customer.number_orders
+    else  
+      render :edit
+    end
   end
 
   # GET /orders/1/edit

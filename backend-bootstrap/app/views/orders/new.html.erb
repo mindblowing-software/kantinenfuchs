@@ -1,6 +1,28 @@
-<h1>New order</h1>
+<h1>Bestellung</h1>
+<h5> für den <%= Date.today.strftime("%d.%m.%Y") %></h5>
 
-<%= render "form", order: @order %>
+<%= form_with(model: @order) do |form| %>
+  <% if @order.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+        <% order.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label "Anzahl", style: "display: block" %>
+    <%= form.number_field :number %>
+  </div>
+
+  <div>
+    <%= form.submit "Bestätigen", class: "btn btn-primary btn-sm" %>
+  </div>
+<% end %>
 
 <br>
 
