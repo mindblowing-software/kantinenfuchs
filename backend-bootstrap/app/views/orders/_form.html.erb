@@ -11,27 +11,12 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :ordered_at, style: "display: block" %>
-    <%= form.date_field :ordered_at %>
-  </div>
-
-  <div>
-    <%= form.label :number, style: "display: block" %>
+  <div class="mb-3">
+    <%= form.label "Anzahl", style: "display: block" %>
     <%= form.number_field :number %>
   </div>
 
   <div>
-    <%= form.label :customer_id, style: "display: block" %>
-    <%= form.text_field :customer_id %>
-  </div>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit "Bestätigen", class: "btn btn-primary btn-sm" %>
   </div>
 <% end %>

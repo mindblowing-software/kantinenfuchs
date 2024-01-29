@@ -1,10 +1,21 @@
 <p style="color: green"><%= notice %></p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-auto">
+      <h1>Bestellung</h1>
+      <h5> für den <%= @order.ordered_at.strftime("%d.%m.%Y") %></h5>
 
-<%= render @order %>
+      <div class="mb-3">
+        <div style="display: block">Anzahl</div>
+        <div><%= @order.number%>
+      </div>
 
-<div>
-  <%= link_to "Edit this order", edit_order_path(@order) %> |
-  <%= link_to "Back to orders", orders_path %>
-
-  <%= button_to "Destroy this order", @order, method: :delete %>
+      <% if @order.ordered_at == Date.today %>
+        <div>
+          <%= link_to "Ändern", edit_order_path(@order), class: "btn btn-primary btn-sm" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
+

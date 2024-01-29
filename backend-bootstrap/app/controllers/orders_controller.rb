@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/1 or /orders/1.json
   def show
+    authorize! @order
   end
 
   # GET /orders/new
@@ -22,12 +23,13 @@ class OrdersController < ApplicationController
       @order = Order.new
       @order.number = current_user.customer.number_orders
     else  
-      render :edit
+      render :show
     end
   end
 
   # GET /orders/1/edit
   def edit
+    authorize! @order
   end
 
   # POST /orders or /orders.json
@@ -50,6 +52,8 @@ class OrdersController < ApplicationController
 
   # PATCH/PUT /orders/1 or /orders/1.json
   def update
+    authorize! @order
+
     respond_to do |format|
       if @order.update(order_params)
         format.html { redirect_to order_url(@order), notice: "Order was successfully updated." }
@@ -63,6 +67,7 @@ class OrdersController < ApplicationController
 
   # DELETE /orders/1 or /orders/1.json
   def destroy
+    authorize @order
     @order.destroy!
 
     respond_to do |format|

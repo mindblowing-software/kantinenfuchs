@@ -1,11 +1,32 @@
-<h1>Bestellung</h1>
-<h5> für den <%= Date.today.strftime("%d.%m.%Y") %></h5>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-auto">
+      <h1>Bestellung</h1>
+      <h5> für den <%= Date.today.strftime("%d.%m.%Y") %></h5>
 
-<%= render "form", order: @order %>
+      <%= form_with(model: @order) do |form| %>
+        <% if @order.errors.any? %>
+          <div style="color: red">
+            <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
 
-<br>
+            <ul>
+              <% order.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
-<div>
-  <%= link_to "Show this order", @order %> |
-  <%= link_to "Back to orders", orders_path %>
+        <div class="mb-3">
+          <%= form.label "Anzahl", style: "display: block" %>
+          <%= form.number_field :number %>
+        </div>
+
+        <div class="d-flex">
+          <%= link_to "Abrechen", @order, class: "btn btn-secondary btn-sm me-2" %>
+          <%= form.submit "Bestätigen", class: "btn btn-primary btn-sm" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

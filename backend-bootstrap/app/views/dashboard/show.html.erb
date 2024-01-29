@@ -4,4 +4,46 @@
 
 <div id="dashboard">
 
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <h5 class="card-header">
+          Bestellungen für heute
+        </h5>
+        <div class="card-body">
+          <ul>
+          <% @today_orders.each do |order| %>
+            <li><%= order.customer.name %> <%= order.number %>
+          <% end %>
+          </ul>
+          <%= link_to "Bestellungen anzeigen", orders_path, class: "btn btn-primary btn-sm" %>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <h5 class="card-header">
+          Anzahl Bestellungen
+        </h5>
+        <div class="card-body">
+          <p class="fs-1 fw-bold"><%= @today_sum %></p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <h5 class="card-header">
+          Bestellungen für heute
+        </h5>
+        <div class="card-body">
+          <ul>
+          <% @today_orders.each do |order| %>
+            <li><%= order.customer.name %> <%= order.number %>
+          <% end %>
+          </ul>
+          <%= link_to "Bestellungen anzeigen", orders_path, class: "btn btn-primary btn-sm" %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

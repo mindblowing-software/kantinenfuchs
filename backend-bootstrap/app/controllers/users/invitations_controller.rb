@@ -1,13 +1,13 @@
 class Users::InvitationsController < Devise::InvitationsController
   before_action :configure_permitted_parameters
 
-#  def update
-#    if @current_user.role == 1
-#      redirect_to root_path
-#    else
-#      super
-#    end
-#  end
+  def after_accept_path_for(user)
+    if user.admin?
+      dashboard_path
+    else
+      new_order_path
+    end
+  end
 
   def new
     self.resource = resource_class.new
