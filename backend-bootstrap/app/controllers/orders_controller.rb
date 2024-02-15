@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   # GET /orders or /orders.json
   def index
     if current_user.admin?
-      @orders = Order.all
+      @orders = Order.all.order(ordered_at: :desc)
     else
       @orders = Order.where(customer: current_user.customer)
     end

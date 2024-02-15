@@ -23,7 +23,7 @@
     <div class="col">
       <div class="card">
         <h5 class="card-header">
-          Anzahl Bestellungen
+          Anzahl Bestellungen heute
         </h5>
         <div class="card-body">
           <p class="fs-1 fw-bold"><%= @today_sum %></p>
@@ -33,15 +33,10 @@
     <div class="col">
       <div class="card">
         <h5 class="card-header">
-          Bestellungen für heute
+          Anzahl Bestellungen in diesem Monat
         </h5>
         <div class="card-body">
-          <ul>
-          <% @today_orders.each do |order| %>
-            <li><%= order.customer.name %> <%= order.number %>
-          <% end %>
-          </ul>
-          <%= link_to "Bestellungen anzeigen", orders_path, class: "btn btn-primary btn-sm" %>
+          <p class="fs-1 fw-bold"><%= @monthly_sum %></p>
         </div>
       </div>
     </div>
