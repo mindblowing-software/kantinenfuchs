@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
     if current_user.admin?
       @orders = Order.all.order(ordered_at: :desc)
     else
-      @orders = Order.where(customer: current_user.customer)
+      @orders = Order.where(customer: current_user.customer).order(ordered_at: :desc)
     end
   end
 

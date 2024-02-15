@@ -1,34 +1,41 @@
-<h2><%= t "devise.invitations.new.header" %></h2>
-<div>für <%= resource.customer.name %></div>
-
-<%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <% resource.class.invite_key_fields.each do |field| -%>
-    <div class="field">
-      <%= f.label field %><br />
-      <%= f.text_field field %>
-    </div>
+<div class="d-flex mb-2">
+  <div class="me-2">
+  <%= link_to customers_path, class: "btn btn-secondary btn-sm" do %>
+    <%= bootstrap_icon "arrow-left-short", class: "pb-1" %> Zurück zur Übersicht
   <% end -%>
-
-  <div class="field">
-    <%= f.label :firstname %>
-    <%= f.text_field :firstname %>
   </div>
+</div>
+<div id="<%= dom_id resource %>" class="card">
+  <h5 class="card-header">Neuen Benutzer für <%= resource.customer.name %> einladen</h5>
+  <div class="card-body">
+    <%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :lastname %>
-    <%= f.text_field :lastname %>
+      <% resource.class.invite_key_fields.each do |field| -%>
+        <div class="field">
+          E-Mail Adresse<br />
+          <%= f.text_field field %>
+        </div>
+      <% end -%>
+
+      <div class="field">
+        Vorname<br />
+        <%= f.text_field :firstname %>
+      </div>
+
+      <div class="field">
+        Nachname<br />
+        <%= f.text_field :lastname %>
+      </div>
+
+      <%= f.hidden_field :customer_id %> 
+
+      <div class="actions mt-2">
+        <%= f.submit "Einladung senden", class: "btn btn-primary btn-sm" %>
+      </div>
+    <% end %>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :role %>
-    <%= f.select :role, options_for_select(User.roles.map { |key, value| [key.humanize, key] }), {prompt: "Select Role"} %>
-  </div>
 
-  <%= f.hidden_field :customer_id %> 
 
-  <div class="actions">
-    <%= f.submit t("devise.invitations.new.submit_button") %>
-  </div>
-<% end %>
