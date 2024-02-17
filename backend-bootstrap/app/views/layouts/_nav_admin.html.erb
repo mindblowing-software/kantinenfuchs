@@ -15,6 +15,9 @@
         <li class="nav-item">
           <%= link_to "Kunden", customers_path, class: ((controller_name == "customers")? "nav-link active" : "nav-link") %>
         </li>
+        <li class="nav-item">
+          <%= link_to "Benutzer", users_path, class: ((controller_name == "users")? "nav-link active" : "nav-link") %>
+        </li>
       </ul>
       <% if user_signed_in? %> 
         <span class="text-white me-2"><%= current_user.email %></span><%= button_to "Abmelden", destroy_user_session_path, method: :delete, class: "btn btn-outline-primary me-2" %> 

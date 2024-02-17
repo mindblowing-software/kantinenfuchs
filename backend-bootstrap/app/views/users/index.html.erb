@@ -1,0 +1,40 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Benutzer</h1>
+
+<div id="users">
+
+  <div class="table-responsive small">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">E-Mail</th>
+          <th scope="col">Kunde</th>  
+          <th scope="col">Rolle</th>        
+          <th scope="col">Status</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr id="<%= dom_id user %>">
+            <td><%= user.firstname %> <%= user.lastname %></td>
+            <td><%= user.email %></td>
+            <td>
+              <% if user.customer.nil? %>-
+              <% else %><%= user.customer.name %>
+              <% end -%>
+            <td><%= user.role %></td>
+            <td>
+              <% if user.invitation_accepted_at.nil? %><span class="badge text-bg-warning">Eingeladen</span>
+              <% else %><span class="badge text-bg-success">Aktiv</span>
+              <% end -%>
+            </td>
+            <td class="text-end"><%= link_to "Anzeigen", user %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
