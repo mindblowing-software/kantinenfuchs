@@ -2,7 +2,13 @@
   <h5 class="card-header"><%= customer.name %></h5>
   <div class="card-body">
     <h5 class="card-title">Defaultanzahl Essen: <%= customer.number_orders %></h5>
-    <p class="card-text">Zugeordnete Benutzer</p>
+    <p class="card-text">
+      <%= customer.street %> <%= customer.house_number %><br />
+      <%= customer.zip_code %> <%= customer.city %>
+    </p> 
+    <p class="card-text"><%= customer.contact_email %></p>   
+    <p class="card-text"><%= customer.contact_phone %></p> 
+    <p class="card-text"><strong>Benutzer</strong></p>
     <ul>
       <% customer.users.each do |user| %>
         <li>

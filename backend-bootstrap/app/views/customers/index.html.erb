@@ -9,7 +9,8 @@
       <thead>
         <tr>
           <th scope="col">Name</th>
-          <th scope="col">Anzahl Bestellungen (default)</th>
+          <th scope="col">Anschrift</th>
+          <th scope="col">Default</th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -17,6 +18,7 @@
         <% @customers.each do |customer| %>
           <tr id="<%= dom_id customer %>">
             <td><%= customer.name %></td>
+            <td><%= customer.street %> <%= customer.house_number %> <%= customer.zip_code %> <%= customer.city %></td>
             <td><%= customer.number_orders %></td>
             <td class="text-end"><%= link_to "Anzeigen", customer %> |
             <%= link_to "Neuen Benutzer einladen", new_user_invitation_path(customer_id: customer.id) %> |
