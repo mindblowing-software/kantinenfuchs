@@ -27,8 +27,8 @@
 #       "yes": yup
 #       enabled: "ON"
 
-en:
-  hello: "Hello world"  
+de:
+  hello: "Hallo Welt"  
   views:
     pagination:
       first: "&laquo;"

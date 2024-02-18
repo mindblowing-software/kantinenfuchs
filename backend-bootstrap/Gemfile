@@ -53,6 +53,9 @@ gem 'devise_invitable', '~> 2.0.0'
 # Action policies
 gem "action_policy"
 
+# Pagination
+gem 'kaminari'
+
 # Bootstrap Icons?
 gem 'bootstrap-icons-helper'
 

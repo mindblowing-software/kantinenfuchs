@@ -4,9 +4,9 @@ class OrdersController < ApplicationController
   # GET /orders or /orders.json
   def index
     if current_user.admin?
-      @orders = Order.all.order(ordered_at: :desc)
+      @orders = Order.all.order(ordered_at: :desc).page params[:page]
     else
-      @orders = Order.where(customer: current_user.customer).order(ordered_at: :desc)
+      @orders = Order.where(customer: current_user.customer).order(ordered_at: :desc).page params[:page]
     end
   end
 
