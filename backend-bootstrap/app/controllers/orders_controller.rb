@@ -10,6 +10,11 @@ class OrdersController < ApplicationController
     end
   end
 
+  def today
+    authorize!
+    @orders = Order.where(ordered_at: Date.today).order(ordered_at: :desc).page params[:page]
+  end
+
   # GET /orders/1 or /orders/1.json
   def show
     authorize! @order

@@ -10,6 +10,10 @@ class OrderPolicy < ApplicationPolicy
     # here we can access our context and record
   #  current_user.admin? || (current_user.customer.id == record.customer_id)
   #end
+  
+  def today?
+    false
+  end
 
   # Scoping
   # See https://actionpolicy.evilmartians.io/#/scoping

@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   }
 
   resources :orders do
-    get '/page/:page', action: :index, on: :collection
+    collection do
+      get '/page/:page', action: :index
+      get :today
+    end
   end
 
   resources :customers
